@@ -1,0 +1,1 @@
+module.exports.BASE_URL = process.env.dev ? "http://localhost:3000" : "https://pinit-notes.herokuapp.com";
