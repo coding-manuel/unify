@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Auth from './components/Auth/Auth'
+import JoinHackathon from './JoinHackathon'
 
 const App = () => {
 	return (
@@ -10,6 +11,7 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='auth' element={<Auth />} />
+				<Route path='join' element={<JoinHackathon />} />
 			</Routes>
 		</div>
 	)
