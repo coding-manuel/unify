@@ -14,12 +14,7 @@ const Navbar = () => {
 					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 						Welcome
 					</Typography>
-					<Button variant='contained' component={RouterLink} to='/join'>
-						Join
-					</Button>
-					<Button variant='contained' component={RouterLink} to='/create'>
-						Create
-					</Button>
+
 					<FeatherIcon icon='user' />
 				</Toolbar>
 			</AppBar>

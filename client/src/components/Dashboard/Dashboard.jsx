@@ -2,6 +2,9 @@ import React from 'react'
 import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
+import Grid from '@mui/material/Grid'
+import Button from '@mui/material/Button'
+import { Link as RouterLink } from 'react-router-dom'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
@@ -33,8 +36,22 @@ const Dashboard = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<Navbar />
+
+			<Grid container direction='row' alignItems='center' justifyItems='space-between'>
+				<Grid item xs={5}>
+					<Button variant='contained' fullWidth component={RouterLink} to='/join'>
+						Join a Hackathon
+					</Button>{' '}
+				</Grid>
+				<Grid item xs={5}>
+					<Button variant='contained' fullWidth component={RouterLink} to='/create'>
+						Create a Hackathon
+					</Button>
+				</Grid>
+			</Grid>
+
 			<Card sx={{ maxWidth: 345, m: 10 }}>
 				<CardHeader
 					avatar={
@@ -85,7 +102,7 @@ const Dashboard = () => {
 			</Card>
 			<Card sx={{ maxWidth: 345, m: 10 }}></Card>
 			<Card sx={{ maxWidth: 345, m: 10 }}></Card>
-		</div>
+		</>
 	)
 }
 
