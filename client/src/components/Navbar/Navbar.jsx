@@ -1,16 +1,22 @@
 import React from 'react'
-import { AppBar, Typography } from '@mui/material'
+import { AppBar, Toolbar, IconButton, Typography, Box } from '@mui/material'
+import FeatherIcon from 'feather-icons-react'
 
 const Navbar = () => {
-	const classes = useStyles()
 	return (
-		<div>
-			<AppBar className={classes.AppBar} position='static'>
-				<Typography className={classes.heading} variant='h2' align='center'>
-					Basic Navbar
-				</Typography>
+		<Box sx={{ flexGrow: 1 }}>
+			<AppBar position='static'>
+				<Toolbar>
+					<IconButton size='large' edge='start' color='inherit' aria-label='menu' sx={{ mr: 2 }}>
+						<FeatherIcon icon='menu' />
+					</IconButton>
+					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+						Welcome
+					</Typography>
+					<FeatherIcon icon='user' />
+				</Toolbar>
 			</AppBar>
-		</div>
+		</Box>
 	)
 }
 
