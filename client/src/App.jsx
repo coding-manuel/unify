@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Auth from './pages/Auth'
-// import JoinHackathon from './JoinHackathon'
-import BasicTabs from './components/StepTABS/InfoTabs'
+import JoinHackathon from './pages/JoinHackathon'
+
 const App = () => {
 	return (
 		<div className='App'>

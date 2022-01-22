@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 
-import Input from './components/Auth/Input'
+import Input from '../components/Auth/Input'
 
-const Joinhackathon = () => {
+const JoinHackathon = () => {
 	return (
 		<form>
 			<Grid
@@ -30,4 +30,4 @@ const Joinhackathon = () => {
 	)
 }
 
-export default Joinhackathon
+export default JoinHackathon
