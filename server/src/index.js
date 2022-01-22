@@ -12,6 +12,7 @@ const connectSocket = require('./socket')
 const BASE_URL = require('./config/keys')
 
 const authRoutes = require('./routes/authRoutes')
+const hackathonRoutes = require("./routes/hackathonRoutes")
 
 //TODO IPORT ROUTES
 
@@ -58,6 +59,7 @@ require('./config/passportConfig')(passport)
 // app.use(express.static(path.join(__dirname, "../../client/build")));
 
 app.use('/api/auth', authRoutes)
+app.use('/api/hackathon', hackathonRoutes)
 
 // app.get("*", function (req, res) {
 // 	res.sendFile("index.html", {
