@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField, Grid } from '@mui/material'
 
-const Input = ({ name, value, handleChange, label, autoFocus, type, half }) => {
+const Input = ({ name, handleChange, value, label, autoFocus, type, half }) => {
 	return (
 		<Grid item xs={12} sm={half ? 6 : 12}>
 			<TextField

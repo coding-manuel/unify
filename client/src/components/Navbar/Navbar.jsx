@@ -1,5 +1,6 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Box } from '@mui/material'
+import { AppBar, Toolbar, IconButton, Button, Typography, Box } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 import FeatherIcon from 'feather-icons-react'
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
 					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 						Welcome
 					</Typography>
+
 					<FeatherIcon icon='user' />
 				</Toolbar>
 			</AppBar>

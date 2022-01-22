@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Button } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
+
 import Navbar from '../components/Navbar/Navbar'
 
 const Home = () => {

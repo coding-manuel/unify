@@ -4,6 +4,10 @@ import FeatherIcon from 'feather-icons-react'
 
 import Input from '../Auth/Input.jsx'
 export default function hackathonDetails() {
+    const [Name, SetName] = useState('')
+    const [Date, SetDate] = useState()
+    const [sTime, SetsTime] = useState()
+    const [eTime, SeteTime] = useState()
 
 	const handleSubmit = () => {
         e.preventDefault();
@@ -26,10 +30,10 @@ export default function hackathonDetails() {
 							</Grid>
 							
 							
-									<Input name='HackathonName' label='Hackathon Name' handleChange={handleChange} half />
-									<Input name='Date' type='date' label='Date' handleChange={handleChange} half />
-							        <Input name='Time' label='Start time' handleChange={handleChange} type='time' />
-                                    <Input name='Time' label='End time' handleChange={handleChange} type='time' />
+									<Input name='HackathonName' label='Hackathon Name' value={Name} handleChange={(event) => SetName(event.target.value)} half />
+									<Input name='Date' type='date' label='Date' value={Date} handleChange={(event) => SetDate(event.target.value)} half />
+							        <Input name='Time' label='Start time' value={sTime} handleChange={(event) => SetsTime(event.target.value)} type='time' />
+                                    <Input name='Time' label='End time' value={eTime} handleChange={(event) => SeteTime(event.target.value)} type='time' />
 						
 
 							<Button sx={{ mt: 2 }} type='submit' variant='contained' color='primary'>
