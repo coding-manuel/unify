@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Paper, Grid, Typography, Link } from '@mui/material'
 import FeatherIcon from 'feather-icons-react'
+import axios from '../services/axios'
 
 import Input from '../components/Auth/Input'
 export default function Auth() {
@@ -11,7 +12,7 @@ export default function Auth() {
 	return (
 		<Grid container alignItems='center' justifyContent='center' sx={{ height: '100vh' }}>
 			<Grid item>
-				<Paper sx={{ p: 2 }}>
+				<Paper sx={{ p: 4 }}>
 					<form>
 						<Grid
 							container
@@ -50,16 +51,18 @@ export default function Auth() {
 								/>
 							)}
 
-							<Button sx={{ mt: 2 }} type='submit' variant='contained' color='primary'>
+							<Button sx={{ mt: 4 }} type='submit' variant='contained' color='primary'>
 								{isSignUp ? 'Sign Up' : 'Sign In'}
 							</Button>
 						</Grid>
 					</form>
 				</Paper>
 				{isSignUp === true ? (
-					<Typography variant='subtitle1'>
-						Already a member? Click here to
+					<Typography py={1} variant='subtitle1'>
+						Already a member?
 						<Link
+							sx={{ px: '4px', cursor: 'pointer' }}
+							underline='hover'
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
@@ -68,16 +71,17 @@ export default function Auth() {
 						</Link>
 					</Typography>
 				) : (
-					<Typography variant='subtitle1'>
-						Click
+					<Typography py={1} variant='subtitle1'>
+						Not a member?
 						<Link
+							sx={{ px: '4px', cursor: 'pointer' }}
+							underline='hover'
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
 						>
-							here
+							Sign up
 						</Link>
-						to register
 					</Typography>
 				)}
 			</Grid>

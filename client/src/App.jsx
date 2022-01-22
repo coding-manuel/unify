@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Auth from './pages/Auth'
-import JoinHackathon from './JoinHackathon'
+import JoinHackathon from './pages/JoinHackathon'
 
 const App = () => {
 	return (
