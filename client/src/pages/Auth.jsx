@@ -1,19 +1,102 @@
 import React, { useState } from 'react'
-import { Button, Paper, Grid, Typography, Link } from '@mui/material'
+import { Button, Paper, Grid, Typography, Link, Snackbar, IconButton } from '@mui/material'
 import FeatherIcon from 'feather-icons-react'
+import { useNavigate } from 'react-router-dom'
 import axios from '../services/axios'
 
 import Input from '../components/Auth/Input'
-export default function Auth() {
-	const [isSignUp, setIsSignUp] = useState(true)
 
-	const handleSubmit = () => {}
-	const handleChange = () => {}
+export default function Auth() {
+	let navigate = useNavigate()
+
+	const [loader, setLoader] = useState(false)
+	const [isSignUp, setIsSignUp] = useState(true)
+	const [open, setOpen] = useState(false)
+	const [error, setError] = useState('')
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
+	const [repeatPassword, setRepeatPassword] = useState('')
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		if (isSignUp) {
+			if ((username === '' || password === '', repeatPassword === '', name === '', email === '')) {
+				setOpen(true)
+				setError('Fill all the details')
+			} else if (password !== repeatPassword) {
+				setOpen(true)
+				setError("Password don't match")
+			}
+
+			axios()
+				.post('/auth/register', {
+					username: username,
+					name: name,
+					email: email,
+					password: password,
+				})
+				.then((res) => {
+					if (res.status === 500) {
+						setOpen(true)
+						setError(res.body)
+					} else {
+						navigate('/dash')
+					}
+				})
+		} else {
+			if (username === '' || password === '') {
+				setOpen(true)
+				setError('Fill all the details')
+			}
+
+			axios()
+				.post('/auth/login', {
+					username: username,
+					password: password,
+				})
+				.then((res) => {
+					if (res.status === 500) {
+						setOpen(true)
+						setError(res.body)
+					} else {
+						navigate('/dash')
+					}
+				})
+		}
+	}
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return
+		}
+		setOpen(false)
+	}
+
 	return (
 		<Grid container alignItems='center' justifyContent='center' sx={{ height: '100vh' }}>
+			<Snackbar
+				open={open}
+				autoHideDuration={6000}
+				onClose={handleClose}
+				message={error}
+				action={
+					<React.Fragment>
+						<IconButton
+							aria-label='close'
+							color='inherit'
+							sx={{ padding: '5px', borderRadius: '6px' }}
+							onClick={handleClose}
+						>
+							<FeatherIcon icon='x' size='16' />
+						</IconButton>
+					</React.Fragment>
+				}
+			/>
 			<Grid item>
 				<Paper sx={{ p: 4 }}>
-					<form>
+					<form autoComplete='off' noValidate onSubmit={handleSubmit}>
 						<Grid
 							container
 							direction='column'
@@ -31,22 +114,42 @@ export default function Auth() {
 							</Grid>
 							{isSignUp && (
 								<>
-									<Input name='firstName' label='First Name' handleChange={handleChange} half />
-									<Input name='firstName' label='Last Name' handleChange={handleChange} half />
+									<Input
+										name='Name'
+										label='First Name'
+										handleChange={(event) => setName(event.target.value)}
+										value={name}
+										half
+										autoFocus={true}
+									/>
+									<Input
+										name='email'
+										label='Email Address'
+										handleChange={(event) => setEmail(event.target.value)}
+										value={email}
+										type='email'
+									/>
 								</>
 							)}
-							<Input name='email' label='Email Address' handleChange={handleChange} type='email' />
+							<Input
+								name='username'
+								label='Username'
+								handleChange={(event) => setUsername(event.target.value)}
+								value={username}
+							/>
 							<Input
 								name='password'
 								label='Password'
-								handleChange={handleChange}
+								handleChange={(event) => setPassword(event.target.value)}
+								value={password}
 								type='passoword'
 							/>
 							{isSignUp && (
 								<Input
 									name='confirmPassword'
 									label='Repeat Password'
-									handleChange={handleChange}
+									handleChange={(event) => setRepeatPassword(event.target.value)}
+									value={repeatPassword}
 									type='password'
 								/>
 							)}

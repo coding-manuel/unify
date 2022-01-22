@@ -42,9 +42,6 @@ app.use(
 	session({
 		store: MongoStore.create({
 			mongoUrl: process.env.MONGO_URI,
-			mongoOptions: {
-				useUnifiedTopology: true,
-			},
 		}),
 		secret: process.env.SESSION_SECRET,
 		resave: false,
@@ -52,8 +49,8 @@ app.use(
 		cookie: { maxAge: 1000 * 60 * 60 * 24 },
 	})
 )
-app.use(cookieParser('secretcode'))
 
+app.use(cookieParser(process.env.SESSION_SECRET))
 app.use(passport.initialize())
 app.use(passport.session())
 require('./config/passportConfig')(passport)
