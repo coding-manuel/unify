@@ -4,9 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 
 import Input from './Input'
 export default function Auth() {
-	const [showPassword, setShowPassword] = useState(false)
 	const [isSignUp, setIsSignUp] = useState(true)
-	const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
 	const handleSubmit = () => {}
 	const handleChange = () => {}
@@ -41,8 +39,7 @@ export default function Auth() {
 								name='password'
 								label='Password'
 								handleChange={handleChange}
-								type={showPassword ? 'text' : 'password'}
-								handleShowPassword={handleShowPassword}
+								type='passoword'
 							/>
 							{isSignUp && (
 								<Input
@@ -61,27 +58,25 @@ export default function Auth() {
 				</Paper>
 				{isSignUp === true ? (
 					<Typography variant='subtitle1'>
-						Already a member? Click here to{' '}
+						Already a member? Click here to
 						<Link
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
 						>
-							{' '}
 							Sign In
 						</Link>
 					</Typography>
 				) : (
 					<Typography variant='subtitle1'>
-						{' '}
-						Click{' '}
+						Click
 						<Link
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
 						>
 							here
-						</Link>{' '}
+						</Link>
 						to register
 					</Typography>
 				)}
