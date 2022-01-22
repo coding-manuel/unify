@@ -9,6 +9,7 @@ module.exports = function (passport) {
 				if (err) throw err
 				if (!user) return done(null, false)
 				bcrypt.compare(password, user.password, (err, result) => {
+					console.log('fghj')
 					if (err) throw err
 					if (result === true) {
 						return done(null, user)
@@ -24,11 +25,10 @@ module.exports = function (passport) {
 		cb(null, user.id)
 	})
 	passport.deserializeUser((id, cb) => {
-		User.findOne({ _id: id }, (err, user) => {
-			const userInformation = {
-				username: user.username,
-			}
-			cb(err, userInformation)
-		})
+		User.findById(id)
+			.then((user) => {
+				cb(null, user)
+			})
+			.catch((err) => cb(err))
 	})
 }
