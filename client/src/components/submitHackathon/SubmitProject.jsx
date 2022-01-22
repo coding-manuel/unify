@@ -1,21 +1,15 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Paper, Grid, Typography, Link } from '@mui/material'
+import Input from '../Auth/Input'
 
-
-export default function InviteHackathon({ID}) {
+export default function SubmitProject() {
 
 	const handleSubmit = () => {
         e.preventDefault();
     }
-
-	useEffect(() =>{
-		axios.get('hackathon/getDetails')
-		.then((res=> console.log(res)) )
-	})
-    
 	const handleChange = () => {}
 	return (
-		<Grid container alignItems='center' justifyContent='center' >
+		<Grid container alignItems='center' justifyContent='center' sx={{ height: '100vh' }}>
 			<Grid item>
 				<Paper sx={{ p: 2 }}>
 					<form>
@@ -27,10 +21,10 @@ export default function InviteHackathon({ID}) {
 							spacing={1}
 						>
 							
-						    Invite
+						<Input name='submitProj' label='submit your github Repo Link'/>
 
 							<Button sx={{ mt: 2 }} type='submit' variant='contained' color='primary'>
-								Complete
+								Submit
 							</Button>
 						</Grid>
 					</form>

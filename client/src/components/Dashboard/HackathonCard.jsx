@@ -10,9 +10,15 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
 import FeatherIcon from 'feather-icons-react'
-import thumbnail from '../../images/uns.png'
 
+<<<<<<< HEAD:client/src/components/Dashboard/HackathonCard.jsx
 const HackathonCard = () => {
+=======
+import thumbnail from '../../images/uns.png'
+import Navbar from '../Navbar/Navbar'
+
+const Dashboard = () => {
+>>>>>>> aab4b743eaf777fbaaf3770ae19206246ee7dded:client/src/components/Dashboard/Dashboard.jsx
 	const ExpandMore = styled((props) => {
 		const { expand, ...other } = props
 		return <IconButton {...other} />

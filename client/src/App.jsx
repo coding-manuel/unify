@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Auth from './pages/Auth'
 import JoinHackathon from './pages/JoinHackathon'
 import CreateHackathon from './pages/CreateHackathon'
-
+import Feed from './pages/Feed'
 const App = () => {
 	return (
 		<div className='App'>
@@ -14,7 +14,7 @@ const App = () => {
 				<Route path='join' element={<JoinHackathon />} />
 				<Route path='dash' element={<Dashboard />} />
 				<Route path='createhackathon' element={<CreateHackathon />} />
-				{/* <Route path='/' element={<Home />} /> */}
+				<Route path='feed' element={<Feed />} />
 			</Routes>
 		</div>
 	)
