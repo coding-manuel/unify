@@ -29,6 +29,11 @@ const PORT = process.env.PORT || 8080
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(
+	express.urlencoded({
+		extended: true,
+	})
+)
 app.use(morgan('common'))
 
 app.use(
@@ -44,16 +49,12 @@ app.use(
 			mongoUrl: process.env.MONGO_URI,
 		}),
 		secret: process.env.SESSION_SECRET,
-		resave: false,
+		resave: true,
 		saveUninitialized: true,
-		cookie: { maxAge: 1000 * 60 * 60 * 24 },
 	})
 )
 
-app.use(cookieParser(process.env.SESSION_SECRET))
-app.use(passport.initialize())
-app.use(passport.session())
-require('./config/passportConfig')(passport)
+app.use(cookieParser(process.env.COOKIE_SECRET))
 
 // app.use(express.static(path.join(__dirname, "../../client/build")));
 
@@ -69,6 +70,6 @@ const middlewares = require('./middlewares')
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
 	console.log(`Listening at PORT: ${PORT}`)
 })

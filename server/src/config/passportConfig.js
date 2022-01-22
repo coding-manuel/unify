@@ -3,13 +3,25 @@ const bcrypt = require('bcryptjs')
 const localStrategy = require('passport-local').Strategy
 
 module.exports = function (passport) {
+	passport.serializeUser((user, cb) => {
+		cb(null, user.id)
+	})
+
+	passport.deserializeUser((id, cb) => {
+		User.findById(id)
+			.then((user) => {
+				cb(null, user)
+			})
+			.catch((err) => cb(err))
+	})
+
 	passport.use(
 		new localStrategy((username, password, done) => {
+			console.log(username, password)
 			User.findOne({ username: username }, (err, user) => {
 				if (err) throw err
 				if (!user) return done(null, false)
 				bcrypt.compare(password, user.password, (err, result) => {
-					console.log('fghj')
 					if (err) throw err
 					if (result === true) {
 						return done(null, user)
@@ -20,15 +32,4 @@ module.exports = function (passport) {
 			})
 		})
 	)
-
-	passport.serializeUser((user, cb) => {
-		cb(null, user.id)
-	})
-	passport.deserializeUser((id, cb) => {
-		User.findById(id)
-			.then((user) => {
-				cb(null, user)
-			})
-			.catch((err) => cb(err))
-	})
 }

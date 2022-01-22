@@ -19,8 +19,8 @@ export default function Auth() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 
-	const handleSubmit = (e) => {
-		e.preventDefault()
+	const handleSubmit = (event) => {
+		event.preventDefault()
 		if (isSignUp) {
 			if ((username === '' || password === '', repeatPassword === '', name === '', email === '')) {
 				setOpen(true)
@@ -38,11 +38,11 @@ export default function Auth() {
 					password: password,
 				})
 				.then((res) => {
-					if (res.status === 500) {
+					if (res.status === 200) {
+						navigate('/dash')
+					} else {
 						setOpen(true)
 						setError(res.body)
-					} else {
-						navigate('/dash')
 					}
 				})
 		} else {
@@ -57,11 +57,12 @@ export default function Auth() {
 					password: password,
 				})
 				.then((res) => {
-					if (res.status === 500) {
-						setOpen(true)
-						setError(res.body)
-					} else {
+					if (res.data === 'Logged In') {
+						window.localStorage.setItem('username', username)
 						navigate('/dash')
+					} else {
+						setOpen(true)
+						setError(res.data)
 					}
 				})
 		}
