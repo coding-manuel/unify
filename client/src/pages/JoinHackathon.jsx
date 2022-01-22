@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import { Typography, Grid, Box, Button, Link } from '@mui/material'
 
-import Input from './components/Auth/Input'
+import Input from '../components/Auth/Input'
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props

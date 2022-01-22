@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import { Button, Paper, Grid, Typography, Link } from '@mui/material'
 import FeatherIcon from 'feather-icons-react'
+import axios from '../services/axios'
 
-import Input from './Input'
+import Input from '../components/Auth/Input'
 export default function Auth() {
-	const [showPassword, setShowPassword] = useState(false)
 	const [isSignUp, setIsSignUp] = useState(true)
-	const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
 	const handleSubmit = () => {}
 	const handleChange = () => {}
 	return (
 		<Grid container alignItems='center' justifyContent='center' sx={{ height: '100vh' }}>
 			<Grid item>
-				<Paper sx={{ p: 2 }}>
+				<Paper sx={{ p: 4 }}>
 					<form>
 						<Grid
 							container
@@ -41,8 +40,7 @@ export default function Auth() {
 								name='password'
 								label='Password'
 								handleChange={handleChange}
-								type={showPassword ? 'text' : 'password'}
-								handleShowPassword={handleShowPassword}
+								type='passoword'
 							/>
 							{isSignUp && (
 								<Input
@@ -53,36 +51,37 @@ export default function Auth() {
 								/>
 							)}
 
-							<Button sx={{ mt: 2 }} type='submit' variant='contained' color='primary'>
+							<Button sx={{ mt: 4 }} type='submit' variant='contained' color='primary'>
 								{isSignUp ? 'Sign Up' : 'Sign In'}
 							</Button>
 						</Grid>
 					</form>
 				</Paper>
 				{isSignUp === true ? (
-					<Typography variant='subtitle1'>
-						Already a member? Click here to{' '}
+					<Typography py={1} variant='subtitle1'>
+						Already a member?
 						<Link
+							sx={{ px: '4px', cursor: 'pointer' }}
+							underline='hover'
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
 						>
-							{' '}
 							Sign In
 						</Link>
 					</Typography>
 				) : (
-					<Typography variant='subtitle1'>
-						{' '}
-						Click{' '}
+					<Typography py={1} variant='subtitle1'>
+						Not a member?
 						<Link
+							sx={{ px: '4px', cursor: 'pointer' }}
+							underline='hover'
 							onClick={() => {
 								setIsSignUp(!isSignUp)
 							}}
 						>
-							here
-						</Link>{' '}
-						to register
+							Sign up
+						</Link>
 					</Typography>
 				)}
 			</Grid>

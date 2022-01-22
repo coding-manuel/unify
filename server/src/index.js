@@ -1,19 +1,26 @@
 const express = require('express')
+const session = require('express-session')
 const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
+const passport = require('passport')
+const MongoStore = require('connect-mongo')
+const cookieParser = require('cookie-parser')
 
 const connectDB = require('./config/db.js')
+const connectSocket = require('./socket')
 const BASE_URL = require('./config/keys')
 
-const routes = require('./routes/route')
+const authRoutes = require('./routes/authRoutes')
 
 //TODO IPORT ROUTES
 
 require('dotenv').config()
 
 const app = express()
+const http = require('http').createServer(app)
 
+connectSocket(http, BASE_URL)
 connectDB() //Connect Database
 
 const PORT = process.env.PORT || 8080
@@ -31,9 +38,29 @@ app.use(
 	})
 )
 
+app.use(
+	session({
+		store: MongoStore.create({
+			mongoUrl: process.env.MONGO_URI,
+			mongoOptions: {
+				useUnifiedTopology: true,
+			},
+		}),
+		secret: process.env.SESSION_SECRET,
+		resave: false,
+		saveUninitialized: true,
+		cookie: { maxAge: 1000 * 60 * 60 * 24 },
+	})
+)
+app.use(cookieParser('secretcode'))
+
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passportConfig')(passport)
+
 // app.use(express.static(path.join(__dirname, "../../client/build")));
 
-app.use('/api', routes)
+app.use('/api/auth', authRoutes)
 
 // app.get("*", function (req, res) {
 // 	res.sendFile("index.html", {

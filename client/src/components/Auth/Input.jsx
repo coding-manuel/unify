@@ -1,7 +1,7 @@
 import React from 'react'
-import { TextField, Grid, IconButton, InputAdornment } from '@mui/material'
+import { TextField, Grid } from '@mui/material'
 
-const Input = ({ name, handleChange, label, autoFocus, type, handleShowPassword, half }) => {
+const Input = ({ name, handleChange, label, autoFocus, type, half }) => {
 	return (
 		<Grid item xs={12} sm={half ? 6 : 12}>
 			<TextField
@@ -14,15 +14,6 @@ const Input = ({ name, handleChange, label, autoFocus, type, handleShowPassword,
 				autoFocus={autoFocus}
 				required
 				type={type}
-				InputProps={
-					name === 'password' && {
-						endAdornment: (
-							<InputAdornment position='end'>
-								<IconButton onClick={handleShowPassword}></IconButton>
-							</InputAdornment>
-						),
-					}
-				}
 			/>
 		</Grid>
 	)
