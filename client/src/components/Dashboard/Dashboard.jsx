@@ -14,8 +14,8 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
 import FeatherIcon from 'feather-icons-react'
-import thumbnail from '../../images/uns.png'
 
+import thumbnail from '../../images/uns.png'
 import Navbar from '../Navbar/Navbar'
 
 const Dashboard = () => {
@@ -39,7 +39,7 @@ const Dashboard = () => {
 		<>
 			<Navbar />
 
-			<Grid container direction='row' alignItems='center' justifyItems='space-between'>
+			{/* <Grid container direction='row' alignItems='center' justifyItems='space-between'>
 				<Grid item xs={5}>
 					<Button variant='contained' fullWidth component={RouterLink} to='/join'>
 						Join a Hackathon
@@ -50,7 +50,7 @@ const Dashboard = () => {
 						Create a Hackathon
 					</Button>
 				</Grid>
-			</Grid>
+			</Grid> */}
 
 			<Card sx={{ maxWidth: 345, m: 10 }}>
 				<CardHeader
