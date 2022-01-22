@@ -12,6 +12,7 @@ const connectSocket = require('./socket')
 const BASE_URL = require('./config/keys')
 
 const authRoutes = require('./routes/authRoutes')
+const hackathonRoutes = require("./routes/hackathonRoutes")
 
 //TODO IPORT ROUTES
 
@@ -29,6 +30,11 @@ const PORT = process.env.PORT || 8080
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(
+	express.urlencoded({
+		extended: true,
+	})
+)
 app.use(morgan('common'))
 
 app.use(
@@ -42,25 +48,19 @@ app.use(
 	session({
 		store: MongoStore.create({
 			mongoUrl: process.env.MONGO_URI,
-			mongoOptions: {
-				useUnifiedTopology: true,
-			},
 		}),
 		secret: process.env.SESSION_SECRET,
-		resave: false,
+		resave: true,
 		saveUninitialized: true,
-		cookie: { maxAge: 1000 * 60 * 60 * 24 },
 	})
 )
-app.use(cookieParser('secretcode'))
 
-app.use(passport.initialize())
-app.use(passport.session())
-require('./config/passportConfig')(passport)
+app.use(cookieParser(process.env.COOKIE_SECRET))
 
 // app.use(express.static(path.join(__dirname, "../../client/build")));
 
 app.use('/api/auth', authRoutes)
+app.use('/api/hackathon', hackathonRoutes)
 
 // app.get("*", function (req, res) {
 // 	res.sendFile("index.html", {
@@ -72,6 +72,6 @@ const middlewares = require('./middlewares')
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
 	console.log(`Listening at PORT: ${PORT}`)
 })

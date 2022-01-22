@@ -7,7 +7,6 @@ const Input = ({ name, handleChange, value, label, autoFocus, type, half }) => {
 			<TextField
 				name={name}
 				placeholder={label}
-				sx={name === 'password' ? { visibility: 'visible' } : null}
 				variant='outlined'
 				size='small'
 				value={value}
