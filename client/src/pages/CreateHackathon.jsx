@@ -2,12 +2,14 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import {Stack, TextField} from '@mui/material'
+
 import HackathonDetails from '../components/StepTABS/HackathonDetails';
 import HackathonDomain from '../components/StepTABS/HackathonDomain';
 import HackathonFAQS from '../components/StepTABS/HackathonFAQS.jsx';
 import Navbar from '../components/Navbar/Navbar.jsx';
+import axios from '../services/axios'
 import InviteHackathon from '../components/StepTABS/InviteHackathon.jsx';
 
 function TabPanel(props) {
@@ -22,8 +24,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 2 }}>
+        {children}
         </Box>
       )}
     </div>
@@ -45,14 +47,24 @@ function a11yProps(index) {
 
 export default function CreateHackathon() {
   const [value, setValue] = React.useState(0);
+  const [Name, setName] = React.useState('')
+  const [ID, setID] = React.useState('')
+
+  const saveName = async (event) => {
+    axios().post('/hackathon/createhackathon',{
+      name: event.target.value
+    }).then((res)=>{
+      console.log(res)
+      setID(res.data.id)
+    })
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    
-    <Box sx={{ width: '100%' }}>
+    <>
     <Navbar/>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -62,18 +74,30 @@ export default function CreateHackathon() {
           <Tab label="Completed" {...a11yProps(3)} />
         </Tabs>
       </Box>
+      <Stack spacing={2} py={2} direction='column' alignItems='center'>
+      <TextField
+				name='hackathonName'
+				placeholder='Hackathon Name'
+				variant='outlined'
+				size='small'
+				value={Name}
+        onChange={(event)=>setName(event.target.value)}
+        onBlur={(event)=>saveName(event)}
+				autoFocus
+			/>
       <TabPanel value={value} index={0}>
-        <HackathonDetails/>
+        <HackathonDetails ID={ID}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <HackathonDomain/>
+        <HackathonDomain ID={ID}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <HackathonFAQS/>
+        <HackathonFAQS ID={ID}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <InviteHackathon/>
+        <InviteHackathon ID={ID}/>
       </TabPanel>
-    </Box>
+      </Stack>
+    </>
   );
 }
