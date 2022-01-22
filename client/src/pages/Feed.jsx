@@ -12,22 +12,18 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import FeatherIcon from 'feather-icons-react'
 import Paper from '@mui/material/Paper'
-import Stack from '@mui/material/Stack'
 import { styled, useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import CssBaseline from '@mui/material/CssBaseline'
 import MuiAppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import { Button } from '@mui/material'
-import List from '@mui/material/List'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
-import ListItemText from '@mui/material/ListItemText'
-import ListItem from '@mui/material/ListItem'
 
 import thumbnail from '../images/uns.png'
+import ChatApp from '../components/Chatapp/ChatApp'
 const drawerWidth = 250
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -146,42 +142,12 @@ const Feed = () => {
 						</IconButton>
 					</DrawerHeader>
 					<Divider />
-					<List>
-						{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-							<ListItem button key={text}>
-								<ListItemText primary={text} />
-							</ListItem>
-						))}
-					</List>
-					<Divider />
-					<List>
-						{['All mail', 'Trash', 'Spam'].map((text, index) => (
-							<ListItem button key={text}></ListItem>
-						))}
-					</List>
+					<ChatApp />
 				</Drawer>
 				<Main open={open}>
 					<DrawerHeader />
 
-					<Stack
-						sx={{ m: 3 }}
-						direction={{ xs: 'column', sm: 'row' }}
-						justifyContent='space-evenly'
-						spacing={{ xs: 1, sm: 2, md: 4 }}
-					>
-						<Item>
-							<Box sx={{ height: 200, width: 300 }}>
-								<Typography variant='h4'>About</Typography>
-								<Typography paragraph>
-									this paragraph is about the hackathon. just read thank you bye
-								</Typography>
-							</Box>
-						</Item>
-						<Item>
-							<Button variant='contained'>Chat w Organisers</Button>
-						</Item>
-					</Stack>
-					<Typography variant='h4' align='center'>
+					<Typography sx={{ pt: 5 }} variant='h4' align='center'>
 						Announcements
 					</Typography>
 					<Card sx={{ maxWidth: 500, m: 10 }}>
