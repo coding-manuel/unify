@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField, Grid } from '@mui/material'
 
-const Input = ({ name, handleChange, label, autoFocus, type, half }) => {
+const Input = ({ name, handleChange, value, label, autoFocus, type, half }) => {
 	return (
 		<Grid item xs={12} sm={half ? 6 : 12}>
 			<TextField
@@ -10,6 +10,7 @@ const Input = ({ name, handleChange, label, autoFocus, type, half }) => {
 				sx={name === 'password' ? { visibility: 'visible' } : null}
 				variant='outlined'
 				size='small'
+				value={value}
 				onChange={handleChange}
 				autoFocus={autoFocus}
 				required
