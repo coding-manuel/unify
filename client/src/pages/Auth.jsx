@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Paper, Grid, Typography, Link } from '@mui/material'
 import FeatherIcon from 'feather-icons-react'
 
-import Input from './Input'
+import Input from '../components/Auth/Input'
 export default function Auth() {
 	const [isSignUp, setIsSignUp] = useState(true)
 
