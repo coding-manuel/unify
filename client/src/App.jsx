@@ -14,7 +14,7 @@ const App = () => {
 				<Route path='auth' element={<Auth />} />
 				<Route path='join' element={<JoinHackathon />} />
 				<Route path='dash' element={<Dashboard />} />
-				<Route path='create' element={<CreateHackathon />} />
+				<Route path='createhackathon' element={<CreateHackathon />} />
 			</Routes>
 		</div>
 	)
