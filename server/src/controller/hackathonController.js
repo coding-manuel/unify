@@ -29,6 +29,8 @@ const putFAQS = (req, res) => {
     })
 }
 
+
+
 // const getDetails = (req,res)=>{
 //     Hackathon.findById({req.body.id})
 // }
