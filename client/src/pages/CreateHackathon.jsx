@@ -46,18 +46,20 @@ function a11yProps(index) {
 }
 
 export default function CreateHackathon() {
-  const [value, setValue] = React.useState(0);
-  const [Name, setName] = React.useState('')
-  const [ID, setID] = React.useState('')
+	const [value, setValue] = React.useState(0)
+	const [Name, setName] = React.useState('')
+	const [ID, setID] = React.useState('')
 
-  const saveName = async (event) => {
-    axios().post('/hackathon/createhackathon',{
-      name: event.target.value
-    }).then((res)=>{
-      console.log(res)
-      setID(res.data.id)
-    })
-  };
+	const saveName = async (event) => {
+		axios()
+			.post('/hackathon/createhackathon', {
+				name: event.target.value,
+			})
+			.then((res) => {
+				console.log(res)
+				setID(res.data.id)
+			})
+	}
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue)

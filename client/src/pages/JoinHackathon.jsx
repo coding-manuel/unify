@@ -2,9 +2,10 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
-import { Typography, Grid, Box, Button, Link } from '@mui/material'
+import { Typography, Grid, Box, Button, Link, Container } from '@mui/material'
 
 import Input from '../components/Auth/Input'
+import Navbar from '../components/Navbar/Navbar'
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props
@@ -17,11 +18,7 @@ function TabPanel(props) {
 			aria-labelledby={`simple-tab-${index}`}
 			{...other}
 		>
-			{value === index && (
-				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
-				</Box>
-			)}
+			{value === index && <Box sx={{ p: 2 }}>{children}</Box>}
 		</div>
 	)
 }
@@ -47,97 +44,71 @@ export default function JoinHackathon() {
 	}
 
 	return (
-		<Box sx={{ width: '100%' }}>
-			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-				<Tabs value={value} onChange={handleChange} aria-label='join tab'>
-					<Tab label='Step 1' {...a11yProps(0)} />
-					<Tab label='Step 2' {...a11yProps(1)} />
-					<Tab label='Step 3' {...a11yProps(2)} />
-				</Tabs>
-			</Box>
-			<TabPanel value={value} index={0}>
-				<form>
-					<Grid
-						container
-						spacing={2}
-						direction='column'
-						justifyItems='space-evenly'
-						alignItems='center'
-						sx={{ m: 4 }}
-					>
-						<Grid item>
-							<Typography variant='h4'>Enter Hackathon code</Typography>
+		<>
+			<Navbar />
+			<Container maxWidth='lg'>
+				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+					<Tabs value={value} onChange={handleChange} aria-label='join tab'>
+						<Tab label='Step 1' {...a11yProps(0)} />
+						<Tab label='Step 2' {...a11yProps(1)} />
+						<Tab label='Step 3' {...a11yProps(2)} />
+					</Tabs>
+				</Box>
+				<TabPanel value={value} index={0}>
+					<form>
+						<Grid
+							container
+							spacing={2}
+							direction='column'
+							justifyItems='space-evenly'
+							alignItems='center'
+							my={2}
+						>
+							<Grid item>
+								<Typography variant='h5'>Enter Hackathon code</Typography>
+							</Grid>
+							<Grid item>
+								<Input name='code' label='Hackathon Code' />
+							</Grid>
+							<Grid item>
+								<Button type='submit' variant='contained'>
+									Submit
+								</Button>
+							</Grid>
 						</Grid>
-						<Grid item>
-							<Input name='code' label='Hackathon Code' />
+					</form>
+				</TabPanel>
+				<TabPanel value={value} index={1}>
+					<form>
+						<Grid
+							container
+							spacing={2}
+							direction='column'
+							justifyItems='space-evenly'
+							alignItems='center'
+							my={2}
+						>
+							<Grid item>
+								<Typography variant='h5'>Add Team Members</Typography>
+							</Grid>
+							<Grid item>
+								<Input name='username' label='@username' />
+							</Grid>
+							<Grid item>
+								<Button type='submit' variant='contained'>
+									Submit
+								</Button>
+							</Grid>
+							<Typography my={2} variant='subtitle1'>
+								Dont have a team yet? <Link variant='subtitle2'>Click here</Link>
+							</Typography>
 						</Grid>
-						<Grid item>
-							<Button type='submit' variant='contained'>
-								Submit
-							</Button>
-						</Grid>
-					</Grid>
-				</form>
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				<form>
-					<Grid
-						container
-						spacing={2}
-						direction='column'
-						justifyItems='space-evenly'
-						alignItems='center'
-						sx={{ m: 4 }}
-					>
-						<Grid item>
-							<Typography variant='h4'>Add Team Members</Typography>
-						</Grid>
-						<Grid item>
-							<Input name='username' label='@username' />
-						</Grid>
-						<Grid item>
-							<Button type='submit' variant='contained'>
-								Submit
-							</Button>
-						</Grid>
-						<Typography variant='subtitle'>
-							Dont have a team yet? Click <Link>here</Link> to let us help you{' '}
-						</Typography>
-					</Grid>
-				</form>
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				Item Three
-			</TabPanel>
-		</Box>
+					</form>
+				</TabPanel>
+				<TabPanel value={value} index={2}>
+					Item Three
+				</TabPanel>
+			</Container>
+		</>
 	)
 }
-
-// const Joinhackathon = () => {
-// 	return (
-// 		<form>
-// 			<Grid
-// 				container
-// 				spacing={2}
-// 				direction='column'
-// 				justifyItems='space-evenly'
-// 				alignItems='center'
-// 				sx={{ m: 4 }}
-// 			>
-// 				<Grid item>
-// 					<Typography variant='h4'>Enter Hackathon code</Typography>
-// 				</Grid>
-// 				<Grid item>
-// 					<Input name='code' label='Hackathon Code' />
-// 				</Grid>
-// 				<Grid item>
-// 					<Button type='submit' variant='contained'>
-// 						Submit
-// 					</Button>
-// 				</Grid>
-// 			</Grid>
-// 		</form>
-// 	)
-// }
-
-// export default Joinhackathon

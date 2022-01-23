@@ -1,12 +1,8 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
 import { Link as RouterLink } from 'react-router-dom'
-import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
+import { Card, CardHeader, CardMedia, Grid } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
 import Collapse from '@mui/material/Collapse'
 import Avatar from '@mui/material/Avatar'
@@ -15,10 +11,7 @@ import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
 import FeatherIcon from 'feather-icons-react'
 
-import thumbnail from '../../images/uns.png'
-import Navbar from '../Navbar/Navbar'
-
-const Dashboard = () => {
+const HackathonCard = () => {
 	const ExpandMore = styled((props) => {
 		const { expand, ...other } = props
 		return <IconButton {...other} />
@@ -36,37 +29,9 @@ const Dashboard = () => {
 	}
 
 	return (
-		<>
-			<Navbar />
-
-			{/* <Grid container direction='row' alignItems='center' justifyItems='space-between'>
-				<Grid item xs={5}>
-					<Button variant='contained' fullWidth component={RouterLink} to='/join'>
-						Join a Hackathon
-					</Button>{' '}
-				</Grid>
-				<Grid item xs={5}>
-					<Button variant='contained' fullWidth component={RouterLink} to='/create'>
-						Create a Hackathon
-					</Button>
-				</Grid>
-			</Grid> */}
-
-			<Card sx={{ maxWidth: 345, m: 10 }}>
-				<CardHeader
-					avatar={
-						<Avatar sx={{ bgcolor: red[500] }} aria-label='unscript'>
-							U
-						</Avatar>
-					}
-					action={
-						<IconButton aria-label='settings'>
-							<FeatherIcon icon='more-vertical' />
-						</IconButton>
-					}
-					title='Unscript crce 2k22'
-					subheader='January 22, 2022'
-				/>
+		<Grid item>
+			<Card sx={{ minWidth: 300, maxWidth: 345, m: 2 }}>
+				<CardHeader title='Unscript crce 2k22' subheader='January 22, 2022' />
 				<CardMedia component='img' height='194' image={thumbnail} alt='Unscript 2022' />
 				<CardContent>
 					<Typography variant='body2' color='text.secondary'>
@@ -75,10 +40,10 @@ const Dashboard = () => {
 				</CardContent>
 				<CardActions>
 					<IconButton aria-label='add to favorites'>
-						<FeatherIcon icon='heart' />
+						<FeatherIcon size='16' icon='heart' />
 					</IconButton>
 					<IconButton aria-label='share'>
-						<FeatherIcon icon='share-2' />
+						<FeatherIcon size='16' icon='share-2' />
 					</IconButton>
 					<ExpandMore
 						expand={expanded}
@@ -86,7 +51,7 @@ const Dashboard = () => {
 						aria-expanded={expanded}
 						aria-label='show more'
 					>
-						<FeatherIcon icon='chevron-down' />
+						<FeatherIcon size='16' icon='chevron-down' />
 					</ExpandMore>
 				</CardActions>
 				<Collapse in={expanded} timeout='auto' unmountOnExit>
@@ -100,10 +65,8 @@ const Dashboard = () => {
 					</CardContent>
 				</Collapse>
 			</Card>
-			<Card sx={{ maxWidth: 345, m: 10 }}></Card>
-			<Card sx={{ maxWidth: 345, m: 10 }}></Card>
-		</>
+		</Grid>
 	)
 }
 
-export default Dashboard
+export default HackathonCard
