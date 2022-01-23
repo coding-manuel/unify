@@ -13,7 +13,7 @@ const BASE_URL = require('./config/keys')
 
 const authRoutes = require('./routes/authRoutes')
 const hackathonRoutes = require("./routes/hackathonRoutes")
-
+const submitRoutes = require("./routes/submitRoutes")
 //TODO IPORT ROUTES
 
 require('dotenv').config()
@@ -61,6 +61,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET))
 
 app.use('/api/auth', authRoutes)
 app.use('/api/hackathon', hackathonRoutes)
+app.use('/api/submit', submitRoutes)
 
 // app.get("*", function (req, res) {
 // 	res.sendFile("index.html", {
