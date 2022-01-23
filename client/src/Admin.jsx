@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Collapse from '@mui/material/Collapse'
 import Avatar from '@mui/material/Avatar'
+import TextField from '@mui/material/TextField'
 import { red } from '@mui/material/colors'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
@@ -22,8 +23,7 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 
-import thumbnail from '../images/uns.png'
-import ChatApp from '../components/Chatapp/ChatApp'
+import thumbnail from './images/uns.png'
 const drawerWidth = 250
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -76,7 +76,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 	justifyContent: 'flex-end',
 }))
 
-const Feed = () => {
+const Admin = () => {
+	const [value1, setValue1] = React.useState(' ')
+	const [value3, setValue3] = React.useState(' ')
 	const theme = useTheme()
 	const [open, setOpen] = React.useState(false)
 
@@ -119,7 +121,7 @@ const Feed = () => {
 							<FeatherIcon icon={open ? 'chevrons-left' : 'chevrons-right'} />
 						</IconButton>
 						<Typography variant='h6' noWrap component='div'>
-							This Hackathon
+							My Hackathon
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -142,61 +144,33 @@ const Feed = () => {
 						</IconButton>
 					</DrawerHeader>
 					<Divider />
-					<ChatApp />
 				</Drawer>
 				<Main open={open}>
 					<DrawerHeader />
 
 					<Typography sx={{ pt: 5 }} variant='h4' align='center'>
-						Announcements
+						Add Announcements
 					</Typography>
-					<Card sx={{ maxWidth: 500, m: 10 }}>
-						<CardHeader
-							avatar={
-								<Avatar sx={{ bgcolor: red[500] }} aria-label='unscript'>
-									U
-								</Avatar>
-							}
-							action={
-								<IconButton aria-label='settings'>
-									<FeatherIcon icon='more-vertical' />
-								</IconButton>
-							}
-							title='Unscript crce 2k22'
-							subheader='January 22, 2022'
+					<Card sx={{ maxWidth: 400, maxHeight: 500, m: 10, p: 10, alignItems: 'center' }}>
+						<TextField
+							id='standard-basic'
+							label='Heading'
+							multiline
+							maxRows={4}
+							value={value1}
+							onChange={(event) => setValue1(event.target.value)}
+							variant='standard'
 						/>
-						<CardMedia component='img' height='194' image={thumbnail} alt='Unscript 2022' />
-						<CardContent>
-							<Typography variant='body2' color='text.secondary'>
-								UnScript, Fr.CRCE's annual national level hackathon has entered its 4th edition
-							</Typography>
-						</CardContent>
-						<CardActions>
-							<IconButton aria-label='add to favorites'>
-								<FeatherIcon icon='heart' />
-							</IconButton>
-							<IconButton aria-label='share'>
-								<FeatherIcon icon='share-2' />
-							</IconButton>
-							<ExpandMore
-								expand={expanded}
-								onClick={handleExpandClick}
-								aria-expanded={expanded}
-								aria-label='show more'
-							>
-								<FeatherIcon icon='chevron-down' />
-							</ExpandMore>
-						</CardActions>
-						<Collapse in={expanded} timeout='auto' unmountOnExit>
-							<CardContent>
-								<Typography paragraph>About:</Typography>
-								<Typography paragraph>24 hrs 4 domains 50+ Teams</Typography>
-								<Typography paragraph>
-									UnScript wishes in bringing opportunities to all coders to have a hands-on
-									experience on various domains and bring the best out of them. Register now!
-								</Typography>
-							</CardContent>
-						</Collapse>
+
+						<TextField
+							id='standard-basic'
+							label='Description'
+							multiline
+							maxRows={4}
+							value={value3}
+							onChange={(event) => setValue3(event.target.value)}
+							variant='standard'
+						/>
 					</Card>
 				</Main>
 			</Box>
@@ -253,4 +227,4 @@ const Feed = () => {
 	)
 }
 
-export default Feed
+export default Admin
