@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
-import { Stack, TextField } from '@mui/material'
+import { Stack, TextField, Container } from '@mui/material'
 
 import HackathonDetails from '../components/StepTABS/HackathonDetails'
 import HackathonDomain from '../components/StepTABS/HackathonDomain'
@@ -64,38 +64,40 @@ export default function CreateHackathon() {
 	return (
 		<>
 			<Navbar />
-			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-				<Tabs value={value} onChange={handleChange} aria-label='basic tabs example'>
-					<Tab label='Details' {...a11yProps(0)} />
-					<Tab label='Domains' {...a11yProps(1)} />
-					<Tab label='Guidelines' {...a11yProps(2)} />
-					<Tab label='Completed' {...a11yProps(3)} />
-				</Tabs>
-			</Box>
-			<Stack spacing={2} py={2} direction='column' alignItems='center'>
-				<TextField
-					name='hackathonName'
-					placeholder='Hackathon Name'
-					variant='outlined'
-					size='small'
-					value={Name}
-					onChange={(event) => setName(event.target.value)}
-					onBlur={(event) => saveName(event)}
-					autoFocus
-				/>
-				<TabPanel value={value} index={0}>
-					<HackathonDetails ID={ID} />
-				</TabPanel>
-				<TabPanel value={value} index={1}>
-					<HackathonDomain ID={ID} />
-				</TabPanel>
-				<TabPanel value={value} index={2}>
-					<HackathonFAQS ID={ID} />
-				</TabPanel>
-				<TabPanel value={value} index={3}>
-					<InviteHackathon ID={ID} />
-				</TabPanel>
-			</Stack>
+			<Container maxWidth='lg'>
+				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+					<Tabs value={value} onChange={handleChange} aria-label='basic tabs example'>
+						<Tab label='Details' {...a11yProps(0)} />
+						<Tab label='Domains' {...a11yProps(1)} />
+						<Tab label='Guidelines' {...a11yProps(2)} />
+						<Tab label='Completed' {...a11yProps(3)} />
+					</Tabs>
+				</Box>
+				<Stack spacing={2} py={2} direction='column' alignItems='center'>
+					<TextField
+						name='hackathonName'
+						placeholder='Hackathon Name'
+						variant='outlined'
+						size='small'
+						value={Name}
+						onChange={(event) => setName(event.target.value)}
+						onBlur={(event) => saveName(event)}
+						autoFocus
+					/>
+					<TabPanel value={value} index={0}>
+						<HackathonDetails ID={ID} />
+					</TabPanel>
+					<TabPanel value={value} index={1}>
+						<HackathonDomain ID={ID} />
+					</TabPanel>
+					<TabPanel value={value} index={2}>
+						<HackathonFAQS ID={ID} />
+					</TabPanel>
+					<TabPanel value={value} index={3}>
+						<InviteHackathon ID={ID} />
+					</TabPanel>
+				</Stack>
+			</Container>
 		</>
 	)
 }

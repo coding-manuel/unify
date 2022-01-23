@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const HackathonSchema = new mongoose.Schema({
+	id: String,
 	name: {
 		type: String,
 	},
@@ -13,25 +14,24 @@ const HackathonSchema = new mongoose.Schema({
 	domain1: {
 		type: String,
 	},
-    domain2: {
+	domain2: {
 		type: String,
 	},
-    domain3: {
+	domain3: {
 		type: String,
 	},
-    domain4: {
+	domain4: {
 		type: String,
 	},
-    guidelines: {
+	guidelines: {
 		type: String,
 	},
-    FAQ1: {
+	FAQ1: {
 		type: String,
 	},
-    FAQ2: {
+	FAQ2: {
 		type: String,
-	}
-
+	},
 })
 
 const Hackathon = mongoose.model('Hackathon', HackathonSchema)

@@ -123,7 +123,6 @@ export const theme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					padding: 10,
 					borderTop: 'thin rgba(255, 255, 255, 0.12) solid',
 				},
 			},

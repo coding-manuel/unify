@@ -8,10 +8,10 @@ import Collapse from '@mui/material/Collapse'
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import { red } from '@mui/material/colors'
 import FeatherIcon from 'feather-icons-react'
+import thumbnail from '../../images/uns.png'
 
-const HackathonCard = () => {
+const HackathonCard = ({ hackathon }) => {
 	const ExpandMore = styled((props) => {
 		const { expand, ...other } = props
 		return <IconButton {...other} />
@@ -31,7 +31,7 @@ const HackathonCard = () => {
 	return (
 		<Grid item>
 			<Card sx={{ minWidth: 300, maxWidth: 345, m: 2 }}>
-				<CardHeader title='Unscript crce 2k22' subheader='January 22, 2022' />
+				<CardHeader title={hackathon.name} subheader='January 22, 2022' />
 				<CardMedia component='img' height='194' image={thumbnail} alt='Unscript 2022' />
 				<CardContent>
 					<Typography variant='body2' color='text.secondary'>
@@ -58,10 +58,7 @@ const HackathonCard = () => {
 					<CardContent>
 						<Typography paragraph>About:</Typography>
 						<Typography paragraph>24 hrs 4 domains 50+ Teams</Typography>
-						<Typography paragraph>
-							UnScript wishes in bringing opportunities to all coders to have a hands-on experience
-							on various domains and bring the best out of them. Register now!
-						</Typography>
+						<Typography paragraph></Typography>
 					</CardContent>
 				</Collapse>
 			</Card>

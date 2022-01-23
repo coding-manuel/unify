@@ -17,6 +17,9 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	hackathon: {
+		type: Array,
+	},
 	fact: String,
 })
 
