@@ -66,12 +66,6 @@ export default function JoinHackathon() {
 					if (res.data) {
 						setHackathon(res.data)
 						setOpenDialog(true)
-						axios()
-							.post('/hackathon/createteam', {
-								hackathonID: hackathonCode,
-								username: username,
-							})
-							.then((res) => setTeamID(res.data))
 						//team present
 					} else {
 						setOpen(true)
@@ -91,17 +85,11 @@ export default function JoinHackathon() {
 				.then((res) => {
 					if (res.data) {
 						axios()
-							.post('/hackathon/addmember', {
-								username: res.data[0].username,
+							.post('/hackathon/createteam', {
 								hackathonID: hackathonCode,
-								teamID: teamID,
+								username: username,
 							})
-							.then((res) => {
-								console.log(res)
-								setOpenDialog(false)
-								setOpen(true)
-								setError('Sucessfully Registered')
-							})
+							.then((res) => setTeamID(res.data))
 						setOpen(true)
 						setError(`${res.data[0].username} has joined the team`)
 					} else {
@@ -124,6 +112,19 @@ export default function JoinHackathon() {
 
 	const handleClickClose = (value) => {
 		if (value) {
+			console.log(value)
+			axios()
+				.post('/hackathon/addmember', {
+					username: username,
+					hackathonID: hackathonCode,
+					teamID: teamID,
+				})
+				.then((res) => {
+					console.log(res)
+					setOpenDialog(false)
+					setOpen(true)
+					setError('Sucessfully Registered')
+				})
 		} else {
 			setOpenDialog(false)
 		}

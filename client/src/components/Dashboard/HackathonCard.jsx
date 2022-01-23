@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import { Link as RouterLink } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import CardContent from '@mui/material/CardContent'
 import { Card, CardHeader, CardMedia, Grid } from '@mui/material'
 import CardActions from '@mui/material/CardActions'
@@ -24,18 +24,23 @@ const HackathonCard = ({ hackathon }) => {
 	}))
 	const [expanded, setExpanded] = React.useState(false)
 
+	const navigate = useNavigate()
 	const handleExpandClick = () => {
 		setExpanded(!expanded)
 	}
 
+	const takefeed = () => {
+		navigate('/feed')
+	}
+
 	return (
-		<Grid item>
+		<Grid item sx={{ cursor: 'pointer' }} onClick={takefeed}>
 			<Card sx={{ minWidth: 300, maxWidth: 345, m: 2 }}>
-				<CardHeader title={hackathon.name} subheader='January 22, 2022' />
+				<CardHeader title={hackathon.name} subheader={hackathon.date} />
 				<CardMedia component='img' height='194' image={thumbnail} alt='Unscript 2022' />
 				<CardContent>
 					<Typography variant='body2' color='text.secondary'>
-						UnScript, Fr.CRCE's annual national level hackathon has entered its 4th edition
+						{hackathon.guidelines}
 					</Typography>
 				</CardContent>
 				<CardActions>
@@ -57,8 +62,7 @@ const HackathonCard = ({ hackathon }) => {
 				<Collapse in={expanded} timeout='auto' unmountOnExit>
 					<CardContent>
 						<Typography paragraph>About:</Typography>
-						<Typography paragraph>24 hrs 4 domains 50+ Teams</Typography>
-						<Typography paragraph></Typography>
+						<Typography paragraph>Time: {hackathon.time}</Typography>
 					</CardContent>
 				</Collapse>
 			</Card>

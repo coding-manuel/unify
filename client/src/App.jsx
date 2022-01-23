@@ -12,16 +12,13 @@ import Admin from './Admin'
 const App = () => {
 	return (
 		<div className='App'>
-	
 			<Routes>
-			    
-				<Route path='/' element={<Home />} />
 				<Route path='auth' element={<Auth />} />
 				<Route path='join' element={<JoinHackathon />} />
 				<Route path='dash' element={<Dashboard />} />
 				<Route path='createhackathon' element={<CreateHackathon />} />
 				<Route path='feed' element={<Feed />} />
-				<Route path='SubmitProject' element={<SubmitProject />} />
+				<Route path='submitproject' element={<SubmitProject />} />
 				<Route path='chat' element={<ChatApp />} />
 				<Route path='admin' element={<Admin />} />
 			</Routes>

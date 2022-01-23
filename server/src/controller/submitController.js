@@ -1,11 +1,18 @@
-const passport = require('passport')
 const Submit = require('../models/Submit')
 
 const submitDetails = (req, res) => {
-	Submit.create({HackID: req.body.HackID}, function(err, doc){
-        if(err) return res.send(500, {error: err})
-        return res.send({id: doc.id})
-    })    
+	Submit.create(
+		{ hackid: req.body.hackID, teamid: req.body.teamID, submitProj: req.body.SubmitProj },
+		function (err, doc) {
+			if (err) return res.send(500, { error: err })
+			return res.send(doc)
+		}
+	)
 }
 
-module.exports = { submitDetails }
+const getDetails = async (req, res) => {
+	const doc = await Submit.find({})
+	res.send(doc)
+}
+
+module.exports = { submitDetails, getDetails }

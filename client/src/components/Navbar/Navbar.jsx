@@ -9,7 +9,7 @@ const Navbar = () => {
 			<Toolbar>
 				<FeatherIcon icon='loader' style={{ margin: '0 6px' }} />
 				<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-					Hackopedia
+					Unify
 				</Typography>
 				<FeatherIcon icon='user' />
 			</Toolbar>
