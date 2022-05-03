@@ -4,14 +4,20 @@ This application would allow users to manage a hackathon event from start to fin
 
 ![Dashboard](https://raw.githubusercontent.com/coding-manuel/pinit/master/client/src/assets/images/pinIT%20Dashboard.png)
 
-⚠ This is very much a WIP and still a bit rough around the edges ⚠.
-
 # Features
-- Users can place and drag notes in the canvas
-- Users can format the text in the notes using the text editor
-- Users can share links to the canvas 
-- Users can collaborate with different users in real-time  
-- Users can save the notes
-- Users can browse through the saved boards in the dashboard
-- Users can register and make an account
-- Users can log in to the application
+- Allows users to create and manage hackathons
+- Allows users to join hackathons
+- Gives users information about upcoming hackathons 
+- Allows users to view information about past hackathons 
+- Allows users to create teams for hackathons 
+- Allows users to view information about other teams 
+- Allows users to view information about other participants 
+- Provides a forum for participants to communicate 
+- Allows organizers to post updates and announcements in a feed format
+- Allows organizers to track RSVPs and attendance 
+- Allows organizers to send out surveys and feedback forms
+- Allows users to have a chat to communicate with each other
+
+--- 
+
+⚠ This is a project made for a hackathon hence is very rough on the edges ⚠.
