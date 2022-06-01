@@ -4,7 +4,7 @@
 
 This application would allow users to manage a hackathon event from start to finish. It would allow for event creation and management, team creation and management, and task management. This application would also include a messaging system to allow for communication between event organizers, teams, and individuals. The application also allows the users to track their progress and see the results of the hackathons.
 
-![Dashboard](https://raw.githubusercontent.com/coding-manuel/pinit/master/client/src/assets/images/pinIT%20Dashboard.png)
+<img src="images/dash.jpg" />
 
 # Features
 - Allows users to create and manage hackathons
